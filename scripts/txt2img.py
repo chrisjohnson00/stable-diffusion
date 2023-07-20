@@ -61,6 +61,9 @@ def load_model_from_config(config, ckpt, verbose=False):
         print("unexpected keys:")
         print(u)
 
+    # memory reduction
+    model.to(torch.float16)
+    # end memory reduction
     model.cuda()
     model.eval()
     return model
