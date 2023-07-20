@@ -37,6 +37,27 @@ pip install transformers==4.19.2 diffusers invisible-watermark
 pip install -e .
 ``` 
 
+### Fully functional installation
+
+```shell
+sudo apt-get update
+sudo apt-get install -y python3 libsm6 libxrender1
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+curl -o sd-v1-4.ckpt https://f004.backblazeb2.com/file/aai-blog-files/sd-v1-4.ckpt 
+git clone https://github.com/CompVis/stable-diffusion.git
+cd stable-diffusion/
+bash --login  # or log out/in if you just installed conda
+conda update -n base -c defaults conda
+conda env create -f environment.yaml
+conda activate ldm
+pip install diffusers==0.12.1  # only needed until https://github.com/CompVis/stable-diffusion/pull/721 updates are made
+
+## Optional memory and feature settings
+export LOW_MEMORY_MODE=true
+export DISABLE_NSFW=true
+export DISABLE_WATERMARK=true
+```
 
 ## Stable Diffusion v1
 
